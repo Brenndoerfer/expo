@@ -119,12 +119,15 @@ Start by generating the template file **metro.config.js** in your project's root
 Then, update the file with the following configuration:
 
 ```js metro.config.js
-const { getDefaultConfig } = require('@expo/metro-config');
+const { getDefaultConfig } = require("expo/metro-config");
 
-const defaultConfig = getDefaultConfig(__dirname);
-defaultConfig.resolver.sourceExts.push('cjs');
+/** @type {import('expo/metro-config').MetroConfig} */
+const config = getDefaultConfig(__dirname);
 
-module.exports = defaultConfig;
+// Modify the resolver to include .cjs files
+config.resolver.sourceExts.push("cjs");
+
+module.exports = config;
 ```
 
 </Step>
